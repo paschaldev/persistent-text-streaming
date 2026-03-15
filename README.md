@@ -84,11 +84,13 @@ export const createChat = mutation({
 export const getChatBody = query({
   args: {
     streamId: StreamIdValidator,
+    listItems: v.optional(v.boolean()) // Return the chunks as an array list of items
   },
   handler: async (ctx, args) => {
     return await persistentTextStreaming.getStreamBody(
       ctx,
       args.streamId as StreamId,
+      listItems,
     );
   },
 });
