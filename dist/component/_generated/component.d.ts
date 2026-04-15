@@ -30,10 +30,12 @@ export type ComponentApi<Name extends string | undefined = string | undefined> =
             streamId: string;
         }, "pending" | "streaming" | "done" | "error" | "timeout", Name>;
         getStreamText: FunctionReference<"query", "internal", {
+            listItems?: boolean;
             streamId: string;
         }, {
             status: "pending" | "streaming" | "done" | "error" | "timeout";
             text: string;
+            textList: Array<string>;
         }, Name>;
         setStreamStatus: FunctionReference<"mutation", "internal", {
             status: "pending" | "streaming" | "done" | "error" | "timeout";

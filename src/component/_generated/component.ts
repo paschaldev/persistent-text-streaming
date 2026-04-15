@@ -42,10 +42,11 @@ export type ComponentApi<Name extends string | undefined = string | undefined> =
       getStreamText: FunctionReference<
         "query",
         "internal",
-        { streamId: string },
+        { listItems?: boolean; streamId: string },
         {
           status: "pending" | "streaming" | "done" | "error" | "timeout";
           text: string;
+          textList: Array<string>;
         },
         Name
       >;
